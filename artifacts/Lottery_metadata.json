@@ -1,0 +1,510 @@
+{
+	"compiler": {
+		"version": "0.8.31+commit.fd3a2265"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "vrfCoordinator",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_keyHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "_subscriptionId",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "have",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "want",
+						"type": "address"
+					}
+				],
+				"name": "OnlyCoordinatorCanFulfill",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_idNew",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_idOld",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint256",
+						"name": "expired",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "types",
+						"type": "uint8"
+					}
+				],
+				"name": "activeNewLottery",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_idLottery",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_idTicket",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint8[]",
+						"name": "numbers",
+						"type": "uint8[]"
+					}
+				],
+				"name": "buyTicket",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "callbackGasLimit",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "",
+						"type": "uint32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_idLottery",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_idTicket",
+						"type": "bytes"
+					}
+				],
+				"name": "claimReward",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getLatestLottery",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes",
+								"name": "previousId",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "id",
+								"type": "bytes"
+							},
+							{
+								"internalType": "uint8",
+								"name": "index",
+								"type": "uint8"
+							},
+							{
+								"internalType": "bool",
+								"name": "isActive",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalBalances",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "remains",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint8[]",
+								"name": "result",
+								"type": "uint8[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "expired",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint8",
+								"name": "types",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct Lottery.LotteryCycle",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_id",
+						"type": "bytes"
+					}
+				],
+				"name": "getLotteryInfo",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes",
+								"name": "previousId",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "id",
+								"type": "bytes"
+							},
+							{
+								"internalType": "uint8",
+								"name": "index",
+								"type": "uint8"
+							},
+							{
+								"internalType": "bool",
+								"name": "isActive",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalBalances",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "remains",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint8[]",
+								"name": "result",
+								"type": "uint8[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "expired",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint8",
+								"name": "types",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct Lottery.LotteryCycle",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_id",
+						"type": "bytes"
+					}
+				],
+				"name": "getLotteryResult",
+				"outputs": [
+					{
+						"internalType": "uint8[]",
+						"name": "",
+						"type": "uint8[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_id",
+						"type": "bytes"
+					}
+				],
+				"name": "inactiveLottery",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "keyHash",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "lotteries",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "totalBalances",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "totalCylces",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"name": "lotteryRandomRequested",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"name": "lotterySettings",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "numberSetting",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "maximunSetting",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "requestId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "randomWords",
+						"type": "uint256[]"
+					}
+				],
+				"name": "rawFulfillRandomWords",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "requestConfirmations",
+				"outputs": [
+					{
+						"internalType": "uint16",
+						"name": "",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "requestIdToLotteryId",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "s_subscriptionId",
+				"outputs": [
+					{
+						"internalType": "uint64",
+						"name": "",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"name": "settingDefault",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "numberSetting",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "maximunSetting",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Lottery.sol": "Lottery"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol": {
+			"keccak256": "0x3d709a5e0f1f9b8841172b10ba8af785dd51a13eda9fc395723a706e51329904",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://038eef992d813c20737fbe94e3a36e5d541d1aa736158dd2a43dd5b840b8c360",
+				"dweb:/ipfs/QmZWJ25Yr1sUSAsfJRKvTMDmGkmy63hHhB495CUL1bpNz4"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol": {
+			"keccak256": "0xa9f8b7e09811f4ac9f421116b5d6bcf50b5748025c0cb012aaf5ff7c39a6b46a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d66b2096987616cda4611c109d9904863872ca5852d736b30f0e19e49afde35f",
+				"dweb:/ipfs/Qmc6jpm3k3YuJG7U2s3FWr81Vk2rdQBhdqD9sA6b8Cr9BE"
+			]
+		},
+		"Lottery.sol": {
+			"keccak256": "0xd1f38a76d92858902f99676c0595ba70388f1f63ed48995690a68eb84589d905",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7e7d53efbf03d1cc848d2af32e736fc3885101abc1913a7a09ee8a0987a33fa8",
+				"dweb:/ipfs/QmTKfUaEBLxhDiVDV1oP6cajfoRfsq3zSwx5m4dtwGr3xw"
+			]
+		}
+	},
+	"version": 1
+}
