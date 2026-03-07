@@ -6,7 +6,7 @@ import "@chainlink/contracts/src/v0.8/vrf/dev/libraries/VRFV2PlusClient.sol";
 
 contract Lottery is VRFConsumerBaseV2Plus {
 
-    mapping(address => bool) operators;
+    mapping(address => bool) public operators;
 
     // VRF v2.5 config
     uint256 public s_subscriptionId;
@@ -124,6 +124,13 @@ contract Lottery is VRFConsumerBaseV2Plus {
         }
     }
 
+    // For testing only
+    function addOperator(address _op) external {
+        require(operators[msg.sender], "Permission required");
+        operators[_op] = true;
+    }
+
+    // For testing only
     function setResultForTesting(bytes memory _id, uint8[] calldata _result) external {
 
         require(operators[msg.sender], "Permission required");

@@ -157,6 +157,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_op",
+						"type": "address"
+					}
+				],
+				"name": "addOperator",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "bytes",
 						"name": "_idLottery",
 						"type": "bytes"
@@ -422,6 +435,25 @@
 						"internalType": "uint256",
 						"name": "price",
 						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "operators",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -695,11 +727,11 @@
 			]
 		},
 		"Lottery.sol": {
-			"keccak256": "0x364e43b3f9dc884ab3499b8db34600e1f21d9202df2abffe59a05237b0e31161",
+			"keccak256": "0x27864b4ec90f9edd6d6285b8d92554334113728426d8151c19495705188e145c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://42a77e14149e7dbab12152f82946032244d1dd33b392ea19376e2b5faf807fae",
-				"dweb:/ipfs/QmaZSLHqoFp1D7M5J2Qdh4oBndy8iVJibsMHkdKmAd28jT"
+				"bzz-raw://af88a848a654d3a4293a4f7939550ed9dcdb8b3e8f8fd45a801c422370e10132",
+				"dweb:/ipfs/QmZgadyDJavoodW6psG6P9kmNTkpsdjiGDtXdRaLehdjhp"
 			]
 		}
 	},
