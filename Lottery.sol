@@ -11,7 +11,7 @@ contract Lottery is VRFConsumerBaseV2Plus {
     // VRF v2.5 config
     uint256 public s_subscriptionId;
     bytes32 public keyHash;
-    uint32 public callbackGasLimit = 200000;
+    uint32 public callbackGasLimit = 800000;
     uint16 public requestConfirmations = 3;
 
     mapping(uint256 => bytes) public requestIdToLotteryId;
@@ -141,7 +141,7 @@ contract Lottery is VRFConsumerBaseV2Plus {
 
         LotteryCycle storage cycle = lotteries.cycles[idx];
 
-        require(!cycle.isActive, "Lottery still active");
+        cycle.isActive = false;
 
         require(
             _result.length == lotterySettings[_id].numberSetting,
@@ -315,6 +315,48 @@ contract Lottery is VRFConsumerBaseV2Plus {
         quickSort(result, 0, numbersCount - 1);
 
         cycle.result = result;
+    }
+
+    function claimReward(bytes memory _idLottery, bytes memory _idTicket) public {
+        uint8 idx = lotteries.ids[_idLottery];
+        LotteryCycle storage cycle = lotteries.cycles[idx];
+
+        require(!cycle.isActive, "Lottery is still active");
+        require(cycle.result.length > 0, "Result not ready yet");
+
+        LotteryTicket storage ticket = lotteryTickets[_idLottery].tickets[_idTicket];
+        require(ticket.buyer == msg.sender, "You are not the ticket owner");
+        require(!ticket.isClaimed, "Reward already claimed");
+
+        uint8 matchCount = compare2Arrays(ticket.numbers, cycle.result);
+        bool isWinner = false;
+        uint256 rewardAmount = 0;
+
+        if (cycle.types == 1) {
+            // Loại 1 (5/50): Trúng 5 số (Giải Nhất), 4 số (Giải Nhì), 3 số (Giải Ba)
+            if (matchCount == 5) {
+                isWinner = true;
+                rewardAmount = (cycle.totalBalances * lotterySettings[_idLottery].rates[1]) / 100;
+            } else if (matchCount == 4) {
+                isWinner = true;
+                rewardAmount = (cycle.totalBalances * lotterySettings[_idLottery].rates[2]) / 100;
+            } else if (matchCount == 3) {
+                isWinner = true;
+                rewardAmount = (cycle.totalBalances * lotterySettings[_idLottery].rates[3]) / 100;
+            }
+        } else if (cycle.types == 2) {
+            if (matchCount == 3) {
+                isWinner = true;
+                rewardAmount = (cycle.totalBalances * lotterySettings[_idLottery].rates[1]) / 100;
+            }
+        }
+
+        require(isWinner, "Sorry, this ticket did not win");
+        require(rewardAmount > 0, "Reward amount is zero");
+        require(address(this).balance >= rewardAmount, "Contract has insufficient balance");
+
+        ticket.isClaimed = true;
+        payable(msg.sender).transfer(rewardAmount);
     }
 
     function _containsPrefix(

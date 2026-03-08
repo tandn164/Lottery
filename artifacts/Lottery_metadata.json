@@ -204,6 +204,24 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_idLottery",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_idTicket",
+						"type": "bytes"
+					}
+				],
+				"name": "claimReward",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "getLatestLottery",
 				"outputs": [
@@ -727,11 +745,11 @@
 			]
 		},
 		"Lottery.sol": {
-			"keccak256": "0x27864b4ec90f9edd6d6285b8d92554334113728426d8151c19495705188e145c",
+			"keccak256": "0xfa352a8dca7b70739054dca16e5a7bdd43d6c7ad955bd07ce84ef52c5f7131e4",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://af88a848a654d3a4293a4f7939550ed9dcdb8b3e8f8fd45a801c422370e10132",
-				"dweb:/ipfs/QmZgadyDJavoodW6psG6P9kmNTkpsdjiGDtXdRaLehdjhp"
+				"bzz-raw://bcbbb2690b9e29da84e05b9c107347175128577947fb5d9fa4d82ffa42f8b1a6",
+				"dweb:/ipfs/QmZC5TBDaUph9xzJ2kkvFA5jHJCUakDfyoQXbiuHRGZMK7"
 			]
 		}
 	},
